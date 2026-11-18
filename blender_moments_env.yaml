@@ -1,0 +1,24 @@
+# Conda env for rendering Blender-Moments and extracting its ground-truth meshes.
+#
+# Create with:   conda env create -f blender_moments_env.yaml
+# Activate with: conda activate blender_moments
+#
+# Pins:
+#  - numpy must stay < 2.0 because bpy's compiled extensions are built
+#    against the numpy 1.x ABI; importing bpy under numpy 2.x fails with
+#    "_ARRAY_API not found" runtime errors. The latest 1.x line (1.26)
+#    is locked in here.
+
+name: blender_moments
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - bpy==4.5.9
+      - numpy<2
+      - pyyaml
+      - pillow
+      - huggingface_hub

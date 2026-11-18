@@ -1,0 +1,10 @@
+Blender4D attributions:
+Alligator: "American Aligator from COTW game" (https://skfb.ly/pvzDY) by Game-animal ripper is licensed under Creative Commons Attribution-NonCommercial (http://creativecommons.org/licenses/by-nc/4.0/).
+Beetle: "Beetle/Fusca (Version 1)" (https://skfb.ly/6GFDP) by soujagah is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+Bicycle: "002_Gym Equipment_Bicycle with Basket_Animated" (https://skfb.ly/pFtC7) by Average3DmodelEnjoyer is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+Book: "Book" (https://skfb.ly/6TJRN) by zoging is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+Elephant: "African Elephant (By jimmyho905)" (https://skfb.ly/pCMI9) by Otherspectre is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+Ficus: "ficus" (https://www.blendswap.com/blend/23125) by Herberhold is released under Creative Commons Zero (CC0), obtained through the NeRF synthetic dataset (Mildenhall et al., 2020). The motion was authored for Blender4D.
+Lego: "lego" (https://www.blendswap.com/blend/11490) by Heinzelnisse is licensed under Creative Commons Attribution-NonCommercial (CC BY-NC), obtained through the NeRF synthetic dataset (Mildenhall et al., 2020). Its built-in animation was activated for Blender4D.
+Spiderman: "Spider-Man 2 Advanced Suit 2.0 PS5" (https://skfb.ly/oOYJt) by jerrylxia is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+Toyota: "Toyota Chaser TourerV" (https://sketchfab.com/3d-models/ecc85a571cb64a2f94b77fae1d975b64) by Swiss_Fox is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/), obtained through Objaverse (Objaverse UID ecc85a571cb64a2f94b77fae1d975b64), since the model is no longer available on Sketchfab.

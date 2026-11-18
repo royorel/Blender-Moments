@@ -1,0 +1,33 @@
+# Conda env for per-frame COLMAP triangulation (scripts/run_colmap*.py).
+#
+# Don't `conda env create -f` this directly. Use `bash install.sh`: after
+# creating this env it installs torch and torchvision built for the local
+# CUDA toolkit, then the torch-dependent packages in
+# bm_colmap_requirements.txt, so nothing pulls a torch build for another
+# CUDA version.
+#
+# Pins:
+#  - colmap / pycolmap pinned to 3.13.*: pycolmap had an API break around
+#    3.x, and the two share native code so their major versions need to
+#    match. Patch updates within 3.13 are allowed.
+
+name: bm_colmap
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - colmap=3.13
+  - pip
+  - pip:
+      - pycolmap==3.13.*
+      - plyfile
+      - pyyaml
+      - h5py
+      - scipy
+      - tqdm
+      - pillow
+      - ninja
+      - pybind11
+      - numpy>=2
+      - huggingface_hub

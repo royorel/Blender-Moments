@@ -1,0 +1,27 @@
+#!/bin/bash
+#SBATCH --job-name={job_name}
+#SBATCH --partition={partition}
+#SBATCH --account={account}
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task={cpus_per_task}
+#SBATCH --mem={mem}
+#SBATCH --gres={gres}
+#SBATCH --constraint={constraint}
+#SBATCH --time={time}
+#SBATCH --output={output_log}
+
+set -euo pipefail
+
+# Isolate from the submission environment: SLURM exports it (--export=ALL), so a
+# conda env active at submit time leaks its libs onto LD_LIBRARY_PATH and shadows
+# this job's env (e.g. another env's libtbb/libembree4 shadowing bpy's bundled
+# SYCL libs). Clear it; module load + conda activate below rebuild what this job needs.
+unset LD_LIBRARY_PATH
+
+{module_loads}
+
+source {conda_init}
+conda activate {conda_env}
+cd {workdir}
+
+{command}

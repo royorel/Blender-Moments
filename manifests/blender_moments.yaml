@@ -1,0 +1,116 @@
+defaults:
+  mesh_object_names: null   # null = use all meshes returned by get_scene_meshes()
+  # Ground-truth mesh frames. An integer N extracts N evenly spaced frames
+  # (the midpoints of N equal sub-ranges of the scene's frame_range); a list
+  # gives explicit frame numbers. A scene entry may override it.
+  gt_mesh_frames: 10
+  # Where slurm `--output` logs are written. Absolute path is built at submit
+  # time, so logs always land here regardless of where render_all.py was
+  # invoked from. Resolved against the dataset root when not absolute.
+  sbatch_log_dir: logs/sbatch
+  # Rig definitions consumed by the render scripts. Names referenced from each
+  # scene's `rig` field below. `source_blend` and `pre_rendered_path` are
+  # resolved relative to <dataset root>/raw/ when not absolute.
+  rig_definitions:
+    standard_50_10:
+      train_count: 50
+      test_count: 10
+      cycles_samples: 128
+      # Camera elevation band in degrees (0 = horizon, +90 = top, -90 = bottom).
+      # Default rig covers the upper hemisphere only.
+      min_elevation: 0
+      max_elevation: 90
+      focal_mm: 50
+      resolution_x: 800
+      resolution_y: 800
+    ficus_50_10:
+      # ficus_4d was rendered with BlenderNeRF's original upper-hemisphere
+      # camera sampling, which ignores the elevation band.
+      train_count: 50
+      test_count: 10
+      cycles_samples: 128
+      min_elevation: 0
+      max_elevation: 90
+      elevation_sampling: blendernerf
+      focal_mm: 50
+      resolution_x: 800
+      resolution_y: 800
+    alligator_50_10:
+      train_count: 50
+      test_count: 10
+      cycles_samples: 128
+      # Slight downward dip to include some belly views (alligator's
+      # high-distinctiveness ventral scutes deserve camera coverage).
+      min_elevation: -10
+      max_elevation: 70
+      focal_mm: 50
+      resolution_x: 800
+      resolution_y: 800
+
+scenes:
+  - name: lego_4d
+    source: local_blender
+    source_blend: lego_4d.blend
+    rig: standard_50_10
+    frame_range: [1, 100]
+    mesh_object_names: null
+
+  - name: alligator
+    source: local_blender
+    source_blend: alligator.blend
+    rig: alligator_50_10
+    frame_range: [1, 100]
+    mesh_object_names: null
+
+  - name: beetle
+    source: local_blender
+    source_blend: beetle.blend
+    rig: standard_50_10
+    frame_range: [1, 150]
+    mesh_object_names: null
+
+  - name: bicycle
+    source: local_blender
+    source_blend: bicycle.blend
+    rig: standard_50_10
+    frame_range: [1, 100]
+    mesh_object_names: null
+
+  - name: book
+    source: local_blender
+    source_blend: book.blend
+    rig: standard_50_10
+    frame_range: [1, 170]
+    mesh_object_names: null
+
+  - name: elephant
+    source: local_blender
+    source_blend: elephant.blend
+    rig: standard_50_10
+    frame_range: [1, 100]
+    mesh_object_names: null
+
+  - name: spiderman
+    source: local_blender
+    source_blend: spiderman.blend
+    rig: standard_50_10
+    frame_range: [1, 120]
+    mesh_object_names: null
+    notes: middle choreography of the original animation at 2x temporal
+      sampling, with reworked hand-knee contact.
+
+  - name: toyota
+    source: local_blender
+    source_blend: toyota.blend
+    rig: standard_50_10
+    frame_range: [1, 150]
+    mesh_object_names: null
+
+  - name: ficus_4d
+    source: local_blender
+    source_blend: ficus_4d.blend
+    rig: ficus_50_10
+    frame_range: [1, 100]
+    mesh_object_names: null
+    notes: from the NeRF synthetic scenes, like lego_4d, with motion authored
+      for Blender-Moments.

@@ -1,0 +1,24 @@
+# Source .blend files, fetched with scripts/download_blend.py.
+raw/
+
+# Rendered images, transforms_*.json, and sfm_init/, fetched with
+# scripts/download_data.py or produced by the render and COLMAP scripts.
+processed/
+
+# Ground-truth meshes, fetched with scripts/download_data.py or produced
+# by scripts/extract_mesh_all.py.
+synthetic_gt/
+
+# Run-time artifacts: logs, download records, and temporary download folders
+logs/
+cache/
+.download_state/
+.download_*/
+
+# Per-user slurm settings (see slurm_config.local.example.yaml).
+slurm_config.local.yaml
+
+# Python bytecode + sbatch log droppings in scripts/
+__pycache__/
+*.pyc
+scripts/*.log

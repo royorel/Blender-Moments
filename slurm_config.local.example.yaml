@@ -1,0 +1,14 @@
+# Template for slurm_config.local.yaml. Copy it to slurm_config.local.yaml
+# and replace every <...> value with your cluster's. Keys you delete keep
+# the values in slurm_config.yaml; keys left empty are left out of the job
+# scripts, so the cluster's own defaults apply.
+
+common:
+  partition: <gpu-partition>          # EDIT: the partition to submit GPU jobs to
+  account: <slurm-account>            # EDIT: your Slurm account, or "" if none is required
+  modules:                            # EDIT: modules to load in every job, or []
+    - <cuda-module>                   #       for example cuda/12.4
+  conda_init: <path/to/conda.sh>      # EDIT: for example /home/me/miniconda3/etc/profile.d/conda.sh
+
+render:
+  constraint: ""                      # OPTIONAL: node features for render jobs, for example a GPU type

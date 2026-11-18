@@ -1,0 +1,7 @@
+# Torch-dependent packages of the bm_colmap env, installed by install.sh
+# after torch, so they reuse the torch built for the local CUDA toolkit.
+#
+# hloc is pinned to a commit on the fork (slim build + Roma matcher +
+# gauge-fixed bundle adjustment). Upstream cvg/Hierarchical-Localization
+# will NOT work.
+hloc @ git+https://github.com/royorel/Hierarchical-Localization-Slim.git@3e24f28

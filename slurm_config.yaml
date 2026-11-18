@@ -1,0 +1,36 @@
+# Slurm configuration for Blender-Moments sbatch jobs, used only by the
+# distributed mode of scripts/render_all.py and scripts/run_colmap_all.py.
+#
+# Two sbatch types (rendering and COLMAP triangulation) share most
+# cluster settings under `common:`; each has its own conda env and may
+# have its own node constraint. The orchestrators merge `common` + their
+# own sub-section at load time, so downstream code sees a flat dict.
+#
+# The resource requests below are what each per-frame job needs. Fill in
+# the cluster-specific keys in `slurm_config.local.yaml` next to this file
+# (same schema, partial overrides allowed, nested sections deep-merged;
+# see slurm_config.local.example.yaml). Empty values are left out of the
+# generated sbatch script.
+
+common:
+  partition: ""     # your cluster's GPU partition
+  account: ""       # your Slurm account, if your cluster requires one
+  cpus_per_task: 6
+  mem: 32G
+  gres: gpu:1
+  time: "4:00:00"
+  modules: []       # environment modules to load, for example a CUDA toolkit
+  conda_init: ""    # path to conda.sh, e.g. <miniconda>/etc/profile.d/conda.sh
+  workdir: ""       # defaults to this repository's scripts/ directory
+
+render:
+  # Node feature constraint, if you want one. Blender 4.5 ships precompiled
+  # Cycles kernels only for some GPU architectures (sm_86 and sm_89); on
+  # others every job compiles them first, adding minutes per frame, so you
+  # may want to restrict render jobs to GPUs of those architectures.
+  constraint: ""
+  conda_env: blender_moments
+
+colmap:
+  constraint: ""    # any CUDA-capable GPU works for hloc and pycolmap
+  conda_env: bm_colmap

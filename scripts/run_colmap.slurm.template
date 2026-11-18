@@ -1,0 +1,21 @@
+#!/bin/bash
+#SBATCH --job-name={job_name}
+#SBATCH --partition={partition}
+#SBATCH --account={account}
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task={cpus_per_task}
+#SBATCH --mem={mem}
+#SBATCH --gres={gres}
+#SBATCH --constraint={constraint}
+#SBATCH --time={time}
+#SBATCH --output={output_log}
+
+set -euo pipefail
+
+{module_loads}
+
+source {conda_init}
+conda activate {conda_env}
+cd {workdir}
+
+{command}
